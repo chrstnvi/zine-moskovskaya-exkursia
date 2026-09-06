@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#ff140d"/>
+    <meta name="description" content="Кейс экспериментального зина по путевым заметкам Памелы Трэверс: от ритма текста до физической режиссуры чтения."/>
+    <title>Московская экскурсия — экспериментальный зин</title>
+    <link rel="stylesheet" href="./styles.css"/>
+<script src="./script.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">К содержанию</a>
+
+    <header class="topbar" aria-label="Навигация по кейсу">
+        <a class="topbar__mark" href="#case" aria-label="К началу кейса">
+            <span>КЗ</span>
+            <span>Московская экскурсия</span>
+        </a>
+        <nav class="topbar__nav">
+            <a href="#reading">Текст</a>
+            <a href="#idea">Идея</a>
+            <a href="#prototype">Прототип</a>
+            <a href="#result">Результат</a>
+        </nav>
+    </header>
+
+    <aside class="route" aria-hidden="true">
+        <span class="route__word">Пойдёмте!</span>
+        <span class="route__track">
+            <span class="route__bar"></span>
+        </span>
+        <span class="route__count">01—07</span>
+    </aside>
+
+    <main id="main">
+        <section class="hero chapter" id="case" data-step="01">
+            <div class="hero__copy">
+                <p class="eyebrow">Campus DesignWorkout · Do you read me?</p>
+                <h1>
+                    <span>Московская</span>
+                    <span>экскурсия</span>
+                </h1>
+                <p class="hero__lead">Экспериментальный зин по путевым заметкам Памелы Трэверс, в котором текст управляет не только взглядом, но и руками читателя.</p>
+                <dl class="project-meta">
+                    <div>
+                        <dt>Формат</dt>
+                        <dd>Квадратный зин · 40 страниц · ручные механики</dd>
+                    </div>
+                    <div>
+                        <dt>Роль</dt>
+                        <dd>Анализ текста, концепция, дизайн и прототип</dd>
+                    </div>
+                    <div>
+                        <dt>Срок</dt>
+                        <dd>Два дня: от чтения до физического объекта</dd>
+                    </div>
+                </dl>
+                <a class="go" href="#brief">
+                    Пойдёмте! 
+                    <span>↓</span>
+                </a>
+            </div>
+            <figure class="hero__visual">
+                <img src="./assets/final-cover.webp" width="1254" height="1254" alt="Квадратный серый зин с красным квадратом, датой 1934 и красной прошивкой"/>
+                <figcaption>
+                    Чистовая визуализация 
+                    <span>01</span>
+                </figcaption>
+            </figure>
+        </section>
+
+        <section class="brief chapter" id="brief" data-step="02">
+            <header class="brief__head">
+                <p class="eyebrow">Задача воркшопа</p>
+                <h2>Найти ритм внутри текста и превратить его в форму.</h2>
+            </header>
+            <div class="brief__days">
+                <article>
+                    <span>День 1</span>
+                    <h3>Разобрать</h3>
+                    <p>Выбрать текст, разметить его повторы, действия, интонации и смысловые ударения.</p>
+                </article>
+                <article>
+                    <span>День 2</span>
+                    <h3>Собрать</h3>
+                    <p>Перевести найденный ритм в последовательность страниц, клапанов, окон и разворотов.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="opening chapter" id="reading" data-step="03">
+            <div class="opening__label">
+                <p class="eyebrow">Сначала прочитать</p>
+                <p class="opening__aside">
+                    Памела Трэверс
+                    <br/>
+                    «Московская экскурсия»
+                    <br/>
+                    1934
+                </p>
+            </div>
+            <div class="opening__body">
+                <h2>Москва у Трэверс не появляется. Она кипит, пузырится и поглощает.</h2>
+                <p class="large-copy">
+                    Меня зацепила не фабула, а густота описания. Серый пейзаж, сверкающие купола, мифические 
+                    <em>ОНИ</em>
+                    , приказной голос гида — в тексте уже были цвет, движение и монтаж.
+                </p>
+                <p>Я сама пишу, поэтому искала текст, в котором важен не только сюжет, но и способ описания. Я читала его как визуальную партитуру: искала места, где сама фраза подсказывает длину, паузу, препятствие или жест.</p>
+            </div>
+        </section>
+
+        <section class="analysis" aria-labelledby="analysis-title">
+            <div class="analysis__copy">
+                <p class="eyebrow">Разобрать до слов</p>
+                <h2 id="analysis-title">Пять проходов по одному тексту</h2>
+                <p class="analysis__note" id="analysis-note">Исходный фрагмент — ещё без готовой идеи и визуальной иерархии.</p>
+                <div class="analysis__tabs" role="tablist" aria-label="Слои анализа текста">
+                    <button class="analysis-tab is-active" role="tab" aria-selected="true" data-src="./assets/analysis-source.webp" data-note="Исходный фрагмент — ещё без готовой идеи и визуальной иерархии.">
+                        <span>01</span>
+                         Исходный текст
+                    </button>
+                    <button class="analysis-tab" role="tab" aria-selected="false" data-src="./assets/analysis-actions.webp" data-note="Глаголы проявили скрытую режиссуру: текст всё время ведёт дальше и не даёт задержаться.">
+                        <span>02</span>
+                         Действия
+                    </button>
+                    <button class="analysis-tab" role="tab" aria-selected="false" data-src="./assets/analysis-descriptors.webp" data-note="Прилагательные и наречия задали температуру: плоско, бескрайне, обманчиво, торопливо.">
+                        <span>03</span>
+                         Какой? Как?
+                    </button>
+                    <button class="analysis-tab" role="tab" aria-selected="false" data-src="./assets/analysis-keys.webp" data-note="Ключевые слова, повторы и авторские сбои собрали ударения внутри каждого абзаца.">
+                        <span>04</span>
+                         Ключи и сбои
+                    </button>
+                    <button class="analysis-tab" role="tab" aria-selected="false" data-src="./assets/analysis-extract.webp" data-note="Когда связки исчезли, осталась траектория: Москва — церкви — ОНИ — Ленин — обожествление.">
+                        <span>05</span>
+                         Только опоры
+                    </button>
+                </div>
+            </div>
+            <div class="analysis__viewport">
+                <div class="analysis__paper">
+                    <img id="analysis-image" src="./assets/analysis-source.webp" width="595" height="842" alt="Страница с исходным текстом Памелы Трэверс"/>
+                </div>
+                <p class="analysis__counter" aria-hidden="true">
+                    <span id="analysis-index">01</span>
+                     / 05
+                </p>
+            </div>
+        </section>
+
+        <section class="thesis chapter" id="idea" data-step="04">
+            <p class="eyebrow">Найденная идея</p>
+            <h2>Ритм текста стал сценарием для рук.</h2>
+            <p class="thesis__lead">Героиню постоянно направляют, торопят и не пускают туда, куда она хочет попасть. Зин берёт на себя ту же роль: заставляет читателя тянуть, возвращать, приоткрывать и пробираться внутрь.</p>
+            <div class="thesis__equation" aria-label="Формула концепции">
+                <span>Текст</span>
+                <b>→</b>
+                <span>Жест</span>
+                <b>→</b>
+                <span>Смысл</span>
+            </div>
+        </section>
+
+        <section class="route-map" aria-labelledby="route-title">
+            <header>
+                <p class="eyebrow">Драматургия издания</p>
+                <h2 id="route-title">Один рассказ — шесть физических состояний</h2>
+            </header>
+            <ol>
+                <li>
+                    <span>01</span>
+                    <h3>Пейзаж тянется</h3>
+                    <p>Фраза «миля за милей» становится длинной полосой, которую нужно вытащить и снова свернуть.</p>
+                </li>
+                <li>
+                    <span>02</span>
+                    <h3>Москва пузырится</h3>
+                    <p>Круг связывает пузырь, солнце, луковичный купол и взгляд России на Восток.</p>
+                </li>
+                <li>
+                    <span>03</span>
+                    <h3>ОНИ приближаются</h3>
+                    <p>Повтор сначала едва заметен, затем становится громче, теснее и агрессивнее.</p>
+                </li>
+                <li>
+                    <span>04</span>
+                    <h3>Не пускают</h3>
+                    <p>Текст сужается до стены. В церковь приходится проникать через маленькую прорезь.</p>
+                </li>
+                <li>
+                    <span>05</span>
+                    <h3>Идеология вторгается</h3>
+                    <p>Детский плакат разворачивается далеко за пределы книги и буквально захватывает пространство.</p>
+                </li>
+                <li>
+                    <span>06</span>
+                    <h3>Взгляд возвращается</h3>
+                    <p>Растровый портрет напоминает: вся увиденная Россия существует здесь через оптику Памелы.</p>
+                </li>
+            </ol>
+        </section>
+
+        <section class="spread-feature spread-feature--flap">
+            <figure>
+                <img src="./assets/final-flap.webp" width="1448" height="1086" alt="Разворот зина с красным клапаном в форме буквы Д и текстом о бескрайнем пейзаже" loading="lazy"/>
+                <figcaption>Клапан превращает закладку в букву «Д» · 01</figcaption>
+            </figure>
+            <div>
+                <p class="eyebrow">Не иллюстрировать — режиссировать</p>
+                <h2>Читатель становится туристом.</h2>
+                <p>Он видит только то, что ему открыли, и движется в заданном порядке. Издание не сопровождает рассказ картинками — оно воспроизводит его давление, запреты и внезапные открытия.</p>
+            </div>
+        </section>
+
+        <section class="palette chapter" data-step="05">
+            <header>
+                <p class="eyebrow">Визуальная система</p>
+                <h2>Два цвета и одно материальное исключение</h2>
+            </header>
+            <div class="palette__row palette__row--gray">
+                <span>01</span>
+                <h3>Серый</h3>
+                <p>Плоский пейзаж, тусклая Россия и воздух между событиями.</p>
+            </div>
+            <div class="palette__row palette__row--red">
+                <span>02</span>
+                <h3>Красный</h3>
+                <p>Любопытство Памелы, напряжение, команда и наступающие «ОНИ».</p>
+            </div>
+
+            <aside class="typeface-note" aria-label="Шрифтовое направление">
+                <p class="eyebrow">Шрифтовое направление</p>
+                <div>
+                    <p class="typeface-note__copy">Для чистовой версии я выбрала бы Gramatika Романа Горницкого: её Shifted-начертание буквально продолжает механику зина — текст не просто читается, а смещается, разрывается и заставляет взгляд двигаться.</p>
+                    <p class="typeface-note__credit">Intended typeface: <a href="https://type.tmpstate.net/preview/Gramatika/Regular/overview/" target="_blank" rel="noreferrer">Gramatika — Roman Gornitsky / The Temporary State ↗</a></p>
+                </div>
+            </aside>
+            <div class="palette__gold">
+                <div>
+                    <span>Фольга</span>
+                    <h3>Золото не печатается. Оно ловит свет.</h3>
+                    <p>Единственное исключение из двухцветной системы — горячее фольгирование. Оно появляется там, где купола вспыхивают в солнечных лучах.</p>
+                </div>
+                <figure>
+                    <img src="./assets/final-gold.webp" width="1448" height="1086" alt="Разворот зина с большим кругом золотого фольгирования и красной страницей" loading="lazy"/>
+                    <figcaption>Визуализация горячего фольгирования · 02</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="slogan" aria-labelledby="slogan-title">
+            <header>
+                <div>
+                    <p class="eyebrow">Самая длинная фраза — самая длинная деталь</p>
+                    <h2 id="slogan-title">Потяни вправо →</h2>
+                </div>
+                <p>
+                    В интерфейсе — горизонтальный скролл.
+                    <br/>
+                    В зине — бумажная гармошка.
+                </p>
+            </header>
+            <div class="slogan__scroller" tabindex="0" aria-label="Горизонтальная развёртка фразы">
+                <img src="./assets/slogan-strip.webp" width="7343" height="668" alt="Красная развёртка с фразой «Игра — не забава, а подготовка к труду!»"/>
+            </div>
+        </section>
+
+        <section class="prototype chapter" id="prototype" data-step="06">
+            <div class="prototype__intro">
+                <p class="eyebrow">День 2 · Ручная проверка</p>
+                <h2>Сначала — черти как. Зато по-настоящему.</h2>
+                <p class="large-copy">Мне нужно было проверить не красоту отдельного разворота, а весь маршрут: что человек увидит первым, куда потянется, где остановится и сможет ли вернуться назад.</p>
+                <p>Вместо аккуратного макета появился прототип, собранный тяп-ляп из скотча, клея и конфетной фольги.</p>
+            </div>
+
+            <div class="process-story">
+                <article class="process-note process-note--plan">
+                    <div class="process-note__copy">
+                        <p class="process-note__index">01 · Маршрут</p>
+                        <h3>Сначала я собрала историю на одном листе.</h3>
+                        <p>Разложила текст на эпизоды и для каждого записала не будущий визуальный приём, а действие читателя: открыть окно, вытянуть полосу, завернуть её обратно, приподнять клапан, протиснуться в щель.</p>
+                        <p>Так стала видна драматургия. Героиню всё время ведут, торопят и куда-то не пускают — значит, и книга должна не просто показывать страницы, а управлять движением рук.</p>
+                    </div>
+                    <figure class="process process--plan">
+                        <img src="./assets/process-plan.webp" width="960" height="1280" alt="Нарисованная от руки схема последовательности зина" loading="lazy"/>
+                        <figcaption>СХЕМА МАРШРУТА И БУМАЖНЫЙ ПРОТОТИП · 03</figcaption>
+                    </figure>
+                </article>
+
+                <article class="process-note process-note--tools">
+                    <div class="process-note__copy">
+                        <p class="process-note__index">02 · Сборка</p>
+                        <h3>Механики пришлось проверять руками.</h3>
+                        <p>На экране легко поверить, что длинная полоса вытянется, клапан откроется, а текст останется читаемым. Бумага быстро показывает правду: где не хватает запаса, что цепляется за сгиб и какой жест получился слишком сложным.</p>
+                        <p>Я резала и переклеивала детали прямо по ходу. Часть решений упростилась, зато каждое оставшееся действие стало ясным и связанным с конкретной фразой.</p>
+                    </div>
+                    <figure class="process process--tools">
+                        <img src="./assets/process-tools.webp" width="1280" height="960" alt="Нож, ножницы и скотч на раскройном коврике" loading="lazy"/>
+                        <figcaption>ИНСТРУМЕНТЫ И ЧЕРНОВОЙ ПРОТОТИП · 01</figcaption>
+                    </figure>
+                </article>
+
+                <article class="process-note process-note--prototype">
+                    <div class="process-note__copy">
+                        <p class="process-note__index">03 · Первый экземпляр</p>
+                        <h3>Ошибки печати тоже стали частью теста.</h3>
+                        <p>Обычный принтер съел края, поэтому текст оказался буквально покусан со всех сторон. Детали держались на черновых креплениях, а горячее фольгирование на время заменили фантики от Ferrero Rocher.</p>
+                        <p>Я не пыталась выдать этот экземпляр за готовую вещь. Его задача была честнее: проверить порядок, масштаб и то, выдерживает ли вся конструкция чтение от первой страницы до последней.</p>
+                    </div>
+                    <figure class="process process--prototype">
+                        <img src="./assets/process-prototype.webp" width="1280" height="960" alt="Ручной прототип зина среди распечаток и обрезков" loading="lazy"/>
+                        <figcaption>Первый рабочий экземпляр среди распечаток</figcaption>
+                    </figure>
+                </article>
+
+                <article class="process-note process-note--table">
+                    <div class="process-note__copy">
+                        <p class="process-note__index">04 · Что подтвердилось</p>
+                        <h3>Прототип доказал: форма действительно ведёт рассказ.</h3>
+                        <p>Длинная гармошка вторгается в пространство, как идеологический плакат. Узкая щель заставляет буквально пробраться внутрь церкви. Повторяющиеся «ОНИ» всё сильнее давят на страницу, а портрет Памелы в конце возвращает нас к её субъективному взгляду.</p>
+                        <p>После этой сборки стало понятно, что нужно переносить в чистовую версию без изменений, а где материалу не хватает точности, ровного обреза и настоящей фольги.</p>
+                    </div>
+                    <figure class="process process--table">
+                        <img src="./assets/process-table.webp" width="1280" height="960" alt="Рабочий стол с собранным прототипом, распечатками и схемой" loading="lazy"/>
+                        <figcaption>РАБОЧИЙ СТОЛ ВО ВРЕМЯ СБОРКИ · 02</figcaption>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <section class="result chapter" id="result" data-step="07">
+            <header class="result__head">
+                <p class="eyebrow">Чистовая версия</p>
+                <h2>Прототип доказал механику. Визуализация показывает вещь.</h2>
+                <div class="result__copy">
+                    <p>Квадратный блок, ровный обрез и одна красная прошивка по центральному сгибу — с интонацией архивного договора.</p>
+                    <p>Внутри сохраняется ручной характер: клапаны, прорези, гармошки и свободные концы нитей. Но теперь каждый приём выглядит намеренным и работает на рассказ.</p>
+                </div>
+            </header>
+            <div class="result-gallery">
+                <figure class="result-shot result-shot--cover">
+                    <img src="./assets/final-cover.webp" width="1254" height="1254" alt="Закрытый серый квадратный зин на чёрном фоне" loading="lazy"/>
+                    <figcaption>Обложка · 01</figcaption>
+                </figure>
+                <figure class="result-shot result-shot--portrait">
+                    <img src="./assets/final-portrait.webp" width="1450" height="1088" alt="Финальный разворот зина с растровым портретом Памелы Трэверс" loading="lazy"/>
+                    <figcaption>Портрет как авторская оптика · 02</figcaption>
+                </figure>
+                <figure class="result-shot result-shot--accordion">
+                    <img src="./assets/final-accordion.webp" width="1450" height="1088" alt="Зин с полностью раскрытой красной бумажной гармошкой" loading="lazy"/>
+                    <figcaption>Плакат выходит за пределы книги · 03</figcaption>
+                </figure>
+            </div>
+            <div class="ending">
+                <p>Итог</p>
+                <blockquote>Механика здесь — не эффект, а способ чтения.</blockquote>
+                <p class="ending__copy">Клапаны останавливают и перенаправляют взгляд, прорези заставляют протискиваться внутрь, гармошка требует вытянуть фразу руками. Чтение становится последовательностью физических действий — так зин повторяет давление, запреты и движение внутри рассказа.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer__title">Московская экскурсия</p>
+        <p>Кристина Зиндович · 2026</p>
+        <p>Campus DesignWorkout: Do you read me?</p>
+        <div class="footer__links">
+            <a href="https://www.instagram.com/reel/DZzeT9vOnsX/" target="_blank" rel="noreferrer">О воркшопе ↗</a>
+            <a href="https://www.instagram.com/reel/DaNmL99CBfg/" target="_blank" rel="noreferrer">Процесс ↗</a>
+            <a href="#case">Наверх ↑</a>
+        </div>
+    </footer>
+    <script>
+    (function() {
+        function c() {
+            var b = a.contentDocument || (a.contentWindow && a.contentWindow.document);
+            if (b) {
+                var d = b.createElement('script');
+                d.innerHTML = "window.__CF$cv$params={r:'a36e433dda31fe9b',t:'MTc4ODcwNTk4MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                b.getElementsByTagName('head')[0].appendChild(d)
+            }
+        }
+        if (document.body) {
+            var a = document.createElement('iframe');
+            a.height = 1;
+            a.width = 1;
+            a.style.position = 'absolute';
+            a.style.top = 0;
+            a.style.left = 0;
+            a.style.border = 'none';
+            a.style.visibility = 'hidden';
+            document.body.appendChild(a);
+            if ('loading' !== document.readyState)
+                c();
+            else if (window.addEventListener)
+                document.addEventListener('DOMContentLoaded', c);
+            else {
+                var e = document.onreadystatechange || function() {};
+                document.onreadystatechange = function(b) {
+                    e(b);
+                    'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                }
+            }
+        }
+    })();
+    </script>
+</body>
+</html>
