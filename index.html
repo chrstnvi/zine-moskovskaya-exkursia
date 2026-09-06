@@ -177,10 +177,49 @@
   </main>
 
   <footer>
-    <p class="footer__title">Московская экскурсия</p>
-    <p>Кристина Зиндович · 2026</p>
-    <p>Campus DesignWorkout: Do you read me?</p>
-    <div class="footer__links"><a href="https://www.instagram.com/reel/DZzeT9vOnsX/" target="_blank" rel="noreferrer">О воркшопе ↗</a><a href="https://www.instagram.com/reel/DaNmL99CBfg/" target="_blank" rel="noreferrer">Процесс ↗</a><a href="#case">Наверх ↑</a></div>
+    <div class="footer__brand">
+      <strong>Московская экскурсия</strong>
+      <span>Кристина Зиндович · 2026</span>
+    </div>
+    <div class="footer__workshop">
+      <strong>Campus DesignWorkout · Do you read me?</strong>
+      <span class="footer__curator">Куратор курса — Елена Пантелеева</span>
+    </div>
+    <nav class="footer__links" aria-label="Ссылки проекта">
+      <a href="https://www.instagram.com/reel/DZzeT9vOnsX/" target="_blank" rel="noreferrer">О воркшопе ↗</a>
+      <a href="https://www.instagram.com/reel/DaNmL99CBfg/" target="_blank" rel="noreferrer">Процесс ↗</a>
+      <a href="#case">Наверх ↑</a>
+    </nav>
   </footer>
+
+  <script>
+    (() => {
+      const excluded = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA"]);
+      const shortWords = /(^|[\s(«„"—–-])((?:а|и|но|да|или|либо|в|во|на|к|ко|с|со|у|о|об|обо|от|до|по|за|из|изо|под|над|при|без|для|про|через|перед|между))\s+(?=\S)/giu;
+
+      const fixTextNode = (node) => {
+        if (node.nodeType !== Node.TEXT_NODE || !node.nodeValue || excluded.has(node.parentElement?.tagName)) return;
+        node.nodeValue = node.nodeValue.replace(shortWords, (_, prefix, word) => `${prefix}${word}\u00A0`);
+      };
+
+      const fixTree = (root) => {
+        if (root.nodeType === Node.TEXT_NODE) {
+          fixTextNode(root);
+          return;
+        }
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = walker.nextNode())) fixTextNode(node);
+      };
+
+      fixTree(document.body);
+
+      new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          mutation.addedNodes.forEach(fixTree);
+        }
+      }).observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
 </body>
 </html>
