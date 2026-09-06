@@ -2,12 +2,6 @@ const root = document.documentElement;
 const routeCount = document.querySelector(".route__count");
 const chapters = [...document.querySelectorAll(".chapter")];
 
-// The analysis sheets and long slogan are rendered as live HTML/CSS, not raster images.
-const codedStyles = document.createElement("link");
-codedStyles.rel = "stylesheet";
-codedStyles.href = "./analysis-coded.css";
-document.head.appendChild(codedStyles);
-
 function updateProgress() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const progress = max > 0 ? Math.min(1, window.scrollY / max) : 0;
@@ -23,16 +17,14 @@ const chapterObserver = new IntersectionObserver(
     const visible = entries
       .filter((entry) => entry.isIntersecting)
       .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
     if (visible && routeCount) routeCount.textContent = `${visible.target.dataset.step}—07`;
   },
   { threshold: [0.12, 0.35, 0.6], rootMargin: "-15% 0px -45% 0px" }
 );
-
 chapters.forEach((chapter) => chapterObserver.observe(chapter));
 
 const analysisTabs = [...document.querySelectorAll(".analysis-tab")];
-const analysisImage = document.querySelector("#analysis-image");
+const analysisMount = document.querySelector("#analysis-image");
 const analysisNote = document.querySelector("#analysis-note");
 const analysisIndex = document.querySelector("#analysis-index");
 const analysisPaper = document.querySelector(".analysis__paper");
@@ -61,69 +53,57 @@ const sourceText = `Памела Трэверс
 Ясли отнюдь не блистали чистотой, и я невольно задавалась вопросом: зачем нам выдали халаты — чтобы защитить детей от нас или нас от детей? Полагаю, скорее последнее.`;
 
 const actionWords = [
-  "проплывал", "кажется", "сделанной", "прошептал", "сбили", "кипит и пузырится", "переливаются", "кажутся", "привыкнуть", "становится явным", "движение в обратном направлении", "шагает", "можно найти", "выглядит", "сменился", "муштрует", "Пойдемте", "команды", "Живо", "марш", "не отставай", "не пускают", "сидят", "не занять", "позволить", "Обсуждают", "не должны", "бродить", "разлеглась", "взбирается", "усиливает", "убил", "приковывали", "любоваться", "твердят", "растолковывала", "прокралась", "прошмыгнула", "Шла", "отделился", "направился", "обмотаны", "удержать", "заговорила", "сжалось", "протянула", "спрятала", "упала", "поглотили", "ответила", "спросила", "произошло", "не устают", "указывали", "демонстрировали", "подвергается", "идет", "заставили", "не позволили", "представить", "проследовали", "сидели", "старались", "не пролить", "понимали", "протянутого", "перевела", "подготовка", "висел", "Заметив", "приподняла", "пояснила", "был", "оторвав взгляд", "покосились", "застыли", "начинается", "не блистали", "задавалась", "выдали", "защитить"
+  "проплывал","кажется","сделанной","прошептал","сбили","кипит и пузырится","переливаются","кажутся","привыкнуть","становится явным","шагает","можно найти","выглядит","сменился","муштрует","Пойдемте","Живо","марш","не отставай","не пускают","сидят","позволить","Обсуждают","бродить","разлеглась","взбирается","усиливает","убил","приковывали","любоваться","твердят","прокралась","прошмыгнула","Шла","отделился","направился","заговорила","сжалось","протянула","спрятала","упала","поглотили","ответила","спросила","не устают","указывали","демонстрировали","подвергается","идет","заставили","не позволили","проследовали","сидели","старались","перевела","висел","пояснила","покосились","застыли","начинается","защитить"
 ];
-
 const descriptorWords = [
-  "бескрайний плоский", "мокрые", "Никаких", "никаких", "сделанной наполовину", "так много", "солнечных", "цветами радуги", "бледными светящимися", "сферами", "Этот поразительный", "азиатской", "окружности", "этого почти", "здесь", "явным", "в обратном направлении", "против часовой стрелки", "весь остальной", "уверенно", "однообразно-серы", "поживее", "трудовой", "заметнее", "Новенькая", "крупная блондинка", "не столь грозна", "с решительностью сержант-майора", "такой огромный", "одну", "другую", "повсюду", "красных зубчатых стен", "вообще суровая", "Громкий бесцветный голос", "Лобное место", "лишь", "снаружи", "сверкающими", "постоянно", "закрыты или превращены", "какой-то исторический сюжет", "мозаичную", "освещенный", "была полна", "Какой-то силуэт", "словно призрак", "обычная не поддающаяся описанию", "остатки", "испуганно и торопливо", "поспешно", "вечный высокомерный", "беззаботно", "старыми русскими", "подходящее", "первейших", "советской веры", "явную досаду", "все церковное", "тлетворном влиянии", "с плохо скрываемым торжеством", "архитектурный", "пережиток идеологии", "самым решительным", "по странному", "белые", "одного размера", "При этом", "подобным", "несколько маленьких", "серьезными и угрюмыми", "ангельского вида", "в шелковой", "синих бархатных штанишках", "с восторгом", "ма-а-алень-ким", "мрачно", "не блистали чистотой", "невольно", "скорее последнее"
+  "бескрайний плоский","мокрые","Никаких","сделанной наполовину","так много","солнечных","цветами радуги","бледными светящимися","поразительный","азиатской","в обратном направлении","против часовой стрелки","однообразно-серы","поживее","крупная блондинка","не столь грозна","с решительностью сержант-майора","такой огромный","повсюду","красных зубчатых стен","вообще суровая","Громкий бесцветный голос","сверкающими","постоянно","мозаичную","освещенный","словно призрак","испуганно и торопливо","поспешно","вечный высокомерный","беззаботно","первейших","явную досаду","с плохо скрываемым торжеством","самым решительным","по странному","белые","одного размера","несколько маленьких","серьезными и угрюмыми","ангельского вида","с восторгом","мрачно","скорее последнее"
 ];
-
 const keyWords = [
-  "миля за милей", "плоский пейзаж", "продукт массового производства", "Нет-нет, конечно, нет!", "сбили меня с толку", "Москва!", "кинодекорации", "азиатской тяге", "стремление России на Восток", "весь остальной мир уверенно шагает на Запад", "Люди", "серы", "краски", "в церквях", "энтузиазм", "гид", "сержант-майора", "ОНИ", "ИМ", "ОНИ — повсюду", "пропаганду", "Москва", "суровая", "В церкви", "не пускают", "церкви закрыты", "прокралась", "силуэт", "направился ко мне", "у меня нашлось, что ей дать", "поглотили", "Ликвидация", "интерес", "досаду", "влиянии религии", "пережиток идеологии царизма", "знакомство", "по странному расписанию", "ясли", "халаты", "детских комнат", "старичков", "понимали смысл плаката", "Так-то, детки!", "портрет", "мальчик", "Это Ленин", "обожествление", "защитить", "от детей"
+  "миля за милей","плоский пейзаж","продукт массового производства","Нет-нет, конечно, нет!","Москва!","кинодекорации","стремление России на Восток","весь остальной мир уверенно шагает на Запад","Люди","серы","краски","в церквях","гид","сержант-майора","ОНИ","ИМ","ОНИ — повсюду","пропаганду","Москва","суровая","В церкви","не пускают","церкви закрыты","прокралась","силуэт","направился ко мне","поглотили","Ликвидация","интерес","влиянии религии","пережиток идеологии царизма","знакомство","по странному расписанию","ясли","халаты","детских комнат","старичков","понимали смысл плаката","Так-то, детки!","портрет","мальчик","Это Ленин","обожествление","защитить","от детей"
 ];
-
 const extractGroups = [
-  ["Миля за милей", "Продукт массового производства", "Нет-нет, конечно нет!", "Сбили меня с толку"],
-  ["Москва!", "Стремление России на Восток"],
-  ["Люди", "Серы", "Краски", "В церквях", "Гид", "Сержант-майор"],
-  ["ОНИ", "ИМ", "ОНИ – повсюду", "Москва", "Суровая"],
-  ["В церкви", "не пускают", "Церкви закрыты", "Прокралась", "Силуэт", "Направился ко мне", "У меня нашлось, что ей дать", "Поглотили"],
-  ["Ликвидация", "Интерес", "Вызывает досаду", "Влияние религии", "Пережиток идеологии царизма"],
-  ["Знакомство", "по расписанию", "Ясли", "халаты"],
-  ["Детские комнаты", "старички", "Понимали смысл плаката", "Так-то, детки!"],
-  ["Портрет", "Мальчик", "Ленин", "Обожествление"],
-  ["Халаты", "Защитить", "От детей"]
+  ["Миля за милей","Продукт массового производства","Нет-нет, конечно нет!","Сбили меня с толку"],
+  ["Москва!","Стремление России на Восток"],
+  ["Люди","Серы","Краски","В церквях","Гид","Сержант-майор"],
+  ["ОНИ","ИМ","ОНИ – повсюду","Москва","Суровая"],
+  ["В церкви","не пускают","Церкви закрыты","Прокралась","Силуэт","Направился ко мне","Поглотили"],
+  ["Ликвидация","Интерес","Вызывает досаду","Влияние религии","Пережиток идеологии царизма"],
+  ["Знакомство","по расписанию","Ясли","халаты"],
+  ["Детские комнаты","старички","Понимали смысл плаката","Так-то, детки!"],
+  ["Портрет","Мальчик","Ленин","Обожествление"],
+  ["Халаты","Защитить","От детей"]
 ];
 
 function escapeHTML(value) {
-  return value.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[char]));
+  return value.replace(/[&<>"']/g, (char) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[char]));
 }
-
-function escapeRegExp(value) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
+function escapeRegExp(value) { return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
 function markText(text, terms, className) {
-  const sorted = [...terms].sort((a, b) => b.length - a.length);
+  const sorted = [...terms].sort((a,b) => b.length - a.length);
   const pattern = new RegExp(`(${sorted.map(escapeRegExp).join("|")})`, "giu");
   return escapeHTML(text).replace(pattern, `<span class="${className}">$1</span>`);
 }
-
-function paragraphs(html) {
-  return html.split(/\n\n+/).map((part) => `<p>${part.replace(/\n/g, "<br>")}</p>`).join("");
-}
+function paragraphs(html) { return html.split(/\n\n+/).map((part) => `<p>${part.replace(/\n/g,"<br>")}</p>`).join(""); }
 
 function buildAnalysisDocument(index) {
   const doc = document.createElement("div");
-  doc.id = "analysis-document";
   doc.className = "analysis-document";
-  doc.setAttribute("role", "img");
-
+  doc.setAttribute("role","img");
   const body = document.createElement("div");
   body.className = "analysis-document__body";
 
   if (index === 0) {
     body.innerHTML = paragraphs(escapeHTML(sourceText));
-    doc.setAttribute("aria-label", "Исходный текст Памелы Трэверс без разметки");
+    doc.setAttribute("aria-label","Исходный текст Памелы Трэверс без разметки");
   } else if (index === 1) {
-    body.innerHTML = paragraphs(markText(sourceText, actionWords, "mark-action"));
-    doc.setAttribute("aria-label", "Текст с выделенными действиями и глаголами");
+    body.innerHTML = paragraphs(markText(sourceText,actionWords,"mark-action"));
+    doc.setAttribute("aria-label","Текст с выделенными действиями");
   } else if (index === 2) {
-    body.innerHTML = paragraphs(markText(sourceText, descriptorWords, "mark-descriptor"));
-    doc.setAttribute("aria-label", "Текст с выделенными прилагательными и наречиями");
+    body.innerHTML = paragraphs(markText(sourceText,descriptorWords,"mark-descriptor"));
+    doc.setAttribute("aria-label","Текст с выделенными прилагательными и наречиями");
   } else if (index === 3) {
-    body.innerHTML = paragraphs(markText(sourceText, keyWords, "mark-key"));
-    doc.setAttribute("aria-label", "Текст с выделенными ключами, повторами и сбоями");
+    body.innerHTML = paragraphs(markText(sourceText,keyWords,"mark-key"));
+    doc.setAttribute("aria-label","Текст с выделенными ключами и крючками");
   } else {
     doc.classList.add("analysis-document--extract");
     body.innerHTML = extractGroups.map((group) => `${group.map((line) => `<p>${escapeHTML(line)}</p>`).join("")}<div class="analysis-document__gap"></div>`).join("");
@@ -131,32 +111,27 @@ function buildAnalysisDocument(index) {
     cult.className = "analysis-document__cult";
     cult.textContent = "культ";
     doc.appendChild(cult);
-    doc.setAttribute("aria-label", "Только ключевые слова, собранные в траекторию текста");
+    doc.setAttribute("aria-label","Только ключевые слова");
   }
-
   doc.appendChild(body);
   return doc;
 }
 
 let analysisDocument = null;
-if (analysisPaper && analysisImage) {
-  analysisImage.removeAttribute("src");
+if (analysisPaper && analysisMount) {
   analysisDocument = buildAnalysisDocument(0);
-  analysisImage.replaceWith(analysisDocument);
+  analysisMount.replaceWith(analysisDocument);
 }
 
 function activateTab(tab) {
   const index = analysisTabs.indexOf(tab);
-
   analysisTabs.forEach((item) => {
     const selected = item === tab;
-    item.classList.toggle("is-active", selected);
-    item.setAttribute("aria-selected", String(selected));
+    item.classList.toggle("is-active",selected);
+    item.setAttribute("aria-selected",String(selected));
     item.tabIndex = selected ? 0 : -1;
   });
-
   analysisDocument?.classList.add("is-changing");
-
   window.setTimeout(() => {
     if (analysisDocument) {
       const nextDocument = buildAnalysisDocument(index);
@@ -164,14 +139,14 @@ function activateTab(tab) {
       analysisDocument = nextDocument;
     }
     if (analysisNote) analysisNote.textContent = tab.dataset.note;
-    if (analysisIndex) analysisIndex.textContent = String(index + 1).padStart(2, "0");
-  }, 150);
+    if (analysisIndex) analysisIndex.textContent = String(index + 1).padStart(2,"0");
+  },150);
 }
 
 analysisTabs.forEach((tab) => {
-  tab.addEventListener("click", () => activateTab(tab));
-  tab.addEventListener("keydown", (event) => {
-    if (!["ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft"].includes(event.key)) return;
+  tab.addEventListener("click",() => activateTab(tab));
+  tab.addEventListener("keydown",(event) => {
+    if (!["ArrowDown","ArrowUp","ArrowRight","ArrowLeft"].includes(event.key)) return;
     event.preventDefault();
     const direction = event.key === "ArrowDown" || event.key === "ArrowRight" ? 1 : -1;
     const nextIndex = (analysisTabs.indexOf(tab) + direction + analysisTabs.length) % analysisTabs.length;
@@ -181,39 +156,20 @@ analysisTabs.forEach((tab) => {
 });
 
 const scroller = document.querySelector(".slogan__scroller");
-const sloganImage = scroller?.querySelector("img");
-
-if (scroller && sloganImage) {
-  sloganImage.removeAttribute("src");
-  const strip = document.createElement("div");
-  strip.className = "slogan-strip-code";
-  strip.setAttribute("role", "img");
-  strip.setAttribute("aria-label", "Игра — не забава, а подготовка к труду!");
-  strip.innerHTML = '<p class="slogan-strip-code__text">Игра — не забава, а подготовка к труду!</p>';
-  sloganImage.replaceWith(strip);
-}
-
 let dragStart = 0;
 let scrollStart = 0;
 let dragging = false;
-
-scroller?.addEventListener("pointerdown", (event) => {
+scroller?.addEventListener("pointerdown",(event) => {
   dragging = true;
   dragStart = event.clientX;
   scrollStart = scroller.scrollLeft;
   scroller.classList.add("is-dragging");
   scroller.setPointerCapture(event.pointerId);
 });
-
-scroller?.addEventListener("pointermove", (event) => {
+scroller?.addEventListener("pointermove",(event) => {
   if (!dragging) return;
   scroller.scrollLeft = scrollStart - (event.clientX - dragStart);
 });
-
-function stopDragging() {
-  dragging = false;
-  scroller?.classList.remove("is-dragging");
-}
-
-scroller?.addEventListener("pointerup", stopDragging);
-scroller?.addEventListener("pointercancel", stopDragging);
+function stopDragging() { dragging = false; scroller?.classList.remove("is-dragging"); }
+scroller?.addEventListener("pointerup",stopDragging);
+scroller?.addEventListener("pointercancel",stopDragging);
