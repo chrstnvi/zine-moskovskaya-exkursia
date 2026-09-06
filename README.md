@@ -1,1 +1,0 @@
-# zine-moskovskaya-exkursia
