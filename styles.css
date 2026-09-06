@@ -638,11 +638,13 @@ footer { display: grid; grid-template-columns: 1.35fr 1fr 1fr 1.2fr; gap: 30px; 
   line-height: 1;
   letter-spacing: -.04em;
 }
+
+/* Long paper strip, matched to Figma node 363:5467: 2931.84 × 260.17, with 81 × 27 padding. */
 .slogan-strip-code {
   position: relative;
-  width: 2937px;
+  width: 2932px;
   max-width: none;
-  height: clamp(190px, 28vw, 410px);
+  height: 260px;
   overflow: hidden;
   flex: 0 0 auto;
   color: #bfbfbf;
@@ -650,22 +652,22 @@ footer { display: grid; grid-template-columns: 1.35fr 1fr 1fr 1.2fr; gap: 30px; 
 }
 .slogan-strip-code__text {
   position: absolute;
-  top: 50%;
-  left: 38px;
+  top: 27px;
+  left: 81px;
   margin: 0;
   color: inherit;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(118px, 16vw, 236px);
+  font-size: 236px;
   font-weight: 400;
-  line-height: .98;
+  line-height: .874;
   letter-spacing: -.045em;
+  text-transform: uppercase;
   white-space: nowrap;
-  transform: translateY(-50%) scaleX(.64);
-  transform-origin: left center;
+  transform: scaleX(.568);
+  transform-origin: left top;
 }
+
 @media (max-width: 720px) {
   .analysis-document__body { font-size: 1.72cqw; }
   .analysis-document--extract .analysis-document__body { font-size: 2.08cqw; }
-  .slogan-strip-code { width: 2100px; }
-  .slogan-strip-code__text { left: 24px; }
 }
